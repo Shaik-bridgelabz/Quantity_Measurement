@@ -102,4 +102,17 @@ public class QuantityMeasurementTest {
         Inch inch2 = null;
         Assert.assertEquals(inch1,inch2);
     }
+
+    @Test
+    public void givenInchValue_whenComparedwithDifferentReference_shouldReturnNotEqual() {
+        Feet feet = new Feet(0.0);
+        Inch inch = new Inch(0.0);
+        Assert.assertNotEquals(feet,inch);
+    }
+
+    @Test
+    public void givenInchValue_whenComparedwithSameReference_shouldReturnEqual() {
+        Inch inch = new Inch(0.0);
+        Assert.assertEquals(inch,inch);
+    }
 }
