@@ -115,4 +115,19 @@ public class QuantityMeasurementTest {
         Inch inch = new Inch(0.0);
         Assert.assertEquals(inch,inch);
     }
+
+    @Test
+    public void givenInchValue_whenComparedwithSameType_shouldReturnEqual() {
+        Inch inch1 = new Inch(5.6);
+        Inch inch2 = new Inch(5.6);
+        Assert.assertEquals(inch1,inch2);
+    }
+
+    @Test
+    public void givenInchValue_whenComparedwithDifferentType_shouldReturnNotEqual() {
+        Inch inch1 = new Inch(5.6);
+        Inch inch2 = new Inch((int)5.6);
+        Assert.assertNotEquals(inch1,inch2);
+    }
+
 }
