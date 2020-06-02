@@ -27,7 +27,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenNullValue_whenComparedwithDifferentValue_shouldReturnNotEqual() {
+    public void givenNullValue_whenComparedwithNullValue_shouldReturnEqual() {
         Feet feet1 = null;
         Feet feet2 = null;
         Assert.assertEquals(feet1,feet2);
@@ -47,4 +47,17 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(feet1,feet2,0.0);
     }
 
+    @Test
+    public void givenFeetValue_whenComparedwithSameType_shouldReturnEqual() {
+        Feet feet1 = new Feet(5.6);
+        Feet feet2 = new Feet(5.6);
+        Assert.assertEquals(feet1,feet2);
+    }
+
+    @Test
+    public void givenFeetValue_whenComparedwithDifferentType_shouldReturnNotEqual() {
+        Feet feet1 = new Feet(5.6);
+        Feet feet2 = new Feet((int)5.6);
+        Assert.assertNotEquals(feet1,feet2);
+    }
 }
