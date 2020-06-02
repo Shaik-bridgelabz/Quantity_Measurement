@@ -130,4 +130,17 @@ public class QuantityMeasurementTest {
         Assert.assertNotEquals(inch1,inch2);
     }
 
+    @Test
+    public void givenInchValue_whenComparedwithSameValue_shouldReturnEqual() {
+        Inch inch1 = new Inch(22.56);
+        Inch inch2 = new Inch(22.56);
+        Assert.assertEquals(inch1,inch2);
+    }
+
+    @Test
+    public void givenInchValue_whenComparedwithDifferentInchValue_shouldReturnNotEqual() {
+        Inch inch1 = new Inch(58.6);
+        Inch inch2 = new Inch(78.32);
+        Assert.assertNotEquals(inch1,inch2);
+    }
 }
