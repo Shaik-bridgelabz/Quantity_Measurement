@@ -60,4 +60,18 @@ public class QuantityMeasurementTest {
         Feet feet2 = new Feet((int)5.6);
         Assert.assertNotEquals(feet1,feet2);
     }
+
+    @Test
+    public void givenFeetValue_whenComparedwithSameValue_shouldReturnEqual() {
+        Feet feet1 = new Feet(65.235);
+        Feet feet2 = new Feet(65.235);
+        Assert.assertEquals(feet1,feet2);
+    }
+
+    @Test
+    public void givenFeetValue_whenComparedwithDifferentFeetValue_shouldReturnNotEqual() {
+        Feet feet1 = new Feet(89.65);
+        Feet feet2 = new Feet(25.87);
+        Assert.assertNotEquals(feet1,feet2);
+    }
 }
