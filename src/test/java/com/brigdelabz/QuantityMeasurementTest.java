@@ -131,4 +131,15 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(true,feetinch.unit.LengthConverter(1.0,3.0));
     }
 
+    @Test
+    public void givenInchValue1_whenComparedwithYardValue1_shouldReturnNotEqual() {
+        QuantityMeasurement feetinch = new QuantityMeasurement(Unit.INCH_TO_YARD);
+        Assert.assertNotEquals(true,feetinch.unit.LengthConverter(1.0,1.0));
+    }
+
+    @Test
+    public void givenInchValue36_whenComparedwithYardValue1_shouldReturnEqual() {
+        QuantityMeasurement feetinch = new QuantityMeasurement(Unit.INCH_TO_YARD);
+        Assert.assertEquals(true,feetinch.unit.LengthConverter(36.0,1.0));
+    }
 }
