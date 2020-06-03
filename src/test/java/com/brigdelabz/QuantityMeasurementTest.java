@@ -94,4 +94,23 @@ public class QuantityMeasurementTest {
         QuantityMeasurement feetinch = new QuantityMeasurement(Unit.FEET_TO_INCH);
         Assert.assertEquals(true,feetinch.unit.LengthConverter(1.0,12.0));
     }
+
+    @Test
+    public void givenInchValue0_whenComparedwithFeetValue0_shouldReturnEqual() {
+        QuantityMeasurement feetinch = new QuantityMeasurement(Unit.INCH_TO_FEET);
+        Assert.assertEquals(true,feetinch.unit.LengthConverter(0.0,0.0));
+    }
+
+    @Test
+    public void givenInchValue1_whenComparedwithFeetValue1_shouldReturnNotEqual() {
+        QuantityMeasurement feetinch = new QuantityMeasurement(Unit.INCH_TO_FEET);
+        Assert.assertNotEquals(true,feetinch.unit.LengthConverter(1.0,1.0));
+    }
+
+    @Test
+    public void givenInchValue12_whenComparedwithFeetValue1_shouldReturnEqual() {
+        QuantityMeasurement feetinch = new QuantityMeasurement(Unit.INCH_TO_FEET);
+        Assert.assertEquals(true,feetinch.unit.LengthConverter(12.0,1.0));
+    }
+
 }
