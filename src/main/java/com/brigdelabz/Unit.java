@@ -28,6 +28,13 @@ public enum Unit {
         public boolean LengthConverter(double value1, double value2) {
             return Double.compare(value1,Math.round(value2 * 12)) == 0;
         }
+    },
+
+    FEET_TO_YARD {
+        @Override
+        public boolean LengthConverter(double value1, double value2) {
+            return Double.compare(value1,Math.round(value2 * 3)) == 0;
+        }
     };
 
 
