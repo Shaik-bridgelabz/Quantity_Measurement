@@ -142,4 +142,10 @@ public class QuantityMeasurementTest {
         QuantityMeasurement feetinch = new QuantityMeasurement(Unit.INCH_TO_YARD);
         Assert.assertEquals(true,feetinch.unit.LengthConverter(36.0,1.0));
     }
+
+    @Test
+    public void givenYardValue1_whenComparedwithYardValue36_shouldReturnEqual() {
+        QuantityMeasurement feetinch = new QuantityMeasurement(Unit.YARD_TO_INCH);
+        Assert.assertEquals(true,feetinch.unit.LengthConverter(1.0,36.0));
+    }
 }
