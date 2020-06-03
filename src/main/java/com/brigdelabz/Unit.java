@@ -35,6 +35,13 @@ public enum Unit {
         public boolean LengthConverter(double value1, double value2) {
             return Double.compare(value1,Math.round(value2 * 3)) == 0;
         }
+    },
+
+    YARD_TO_FEET {
+        @Override
+        public boolean LengthConverter(double value1, double value2) {
+            return Double.compare(Math.round(value1 * 3),value2) == 0;
+        }
     };
 
 
