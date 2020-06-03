@@ -78,8 +78,20 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenFeetValue_whenComparedwithInchValue_shouldReturnEqual() {
+    public void givenFeetValue0_whenComparedwithInchValue0_shouldReturnEqual() {
         QuantityMeasurement feetinch = new QuantityMeasurement(Unit.FEET_TO_INCH);
         Assert.assertEquals(true,feetinch.unit.LengthConverter(0.0,0.0));
+    }
+
+    @Test
+    public void givenFeetValue1_whenComparedwithInchValue1_shouldReturnNotEqual() {
+        QuantityMeasurement feetinch = new QuantityMeasurement(Unit.FEET_TO_INCH);
+        Assert.assertNotEquals(true,feetinch.unit.LengthConverter(1.0,1.0));
+    }
+
+    @Test
+    public void givenFeetValue1_whenComparedwithInchValue12_shouldReturnEqual() {
+        QuantityMeasurement feetinch = new QuantityMeasurement(Unit.FEET_TO_INCH);
+        Assert.assertEquals(true,feetinch.unit.LengthConverter(1.0,12.0));
     }
 }
