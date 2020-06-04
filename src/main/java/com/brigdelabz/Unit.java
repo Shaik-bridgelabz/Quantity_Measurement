@@ -2,64 +2,17 @@ package com.brigdelabz;
 
 
 public enum Unit {
-    FEET {
-            @Override
-            public boolean LengthConverter(double value1, double value2) {
-                return Double.compare(value1, value2) == 0;
-            }
-    },
+    FEET(12.0), INCH(1.0), YARD(36.0);
 
-    INCH {
-            @Override
-            public boolean LengthConverter(double value1, double value2) {
-                return Double.compare(value1, value2) == 0;
-            }
-    },
+    private double baseUnitConversion;
 
-    FEET_TO_INCH {
-            @Override
-            public boolean LengthConverter(double value1, double value2) {
-                return Double.compare(Math.round(value1 * FEET_INCH_MULTIPLIER), value2) == 0;
-            }
-    },
+    Unit(double baseUnitConversion) {
+        this.baseUnitConversion=baseUnitConversion;
+    }
 
-    INCH_TO_FEET {
-        @Override
-        public boolean LengthConverter(double value1, double value2) {
-            return Double.compare(value1,Math.round(value2 * FEET_INCH_MULTIPLIER)) == 0;
-        }
-    },
+    public static boolean compare(QuantityMeasurement length1, QuantityMeasurement length2) {
+        return Double.compare(length1.unit.baseUnitConversion*length1.value,
+                length2.unit.baseUnitConversion*length2.value ) ==0;
+    }
 
-    FEET_TO_YARD {
-        @Override
-        public boolean LengthConverter(double value1, double value2) {
-            return Double.compare(value1,Math.round(value2 * YARD_FEET_MULTILIER)) == 0;
-        }
-    },
-
-    YARD_TO_FEET {
-        @Override
-        public boolean LengthConverter(double value1, double value2) {
-            return Double.compare(Math.round(value1 * YARD_FEET_MULTILIER),value2) == 0;
-        }
-    },
-
-    INCH_TO_YARD {
-        @Override
-        public boolean LengthConverter(double value1, double value2) {
-            return Double.compare(value1,Math.round(value2 * YARD_FEET_MULTILIER * FEET_INCH_MULTIPLIER)) == 0;
-        }
-    },
-
-    YARD_TO_INCH {
-        @Override
-        public boolean LengthConverter(double value1, double value2) {
-            return Double.compare(Math.round(value1 * YARD_FEET_MULTILIER * FEET_INCH_MULTIPLIER),value2) == 0;
-        }
-    };
-
-
-    public abstract boolean LengthConverter(double value1, double value2);
-    private static final double FEET_INCH_MULTIPLIER=12;
-    private static final double YARD_FEET_MULTILIER=3;
 }
