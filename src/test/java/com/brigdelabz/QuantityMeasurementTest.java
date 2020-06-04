@@ -216,4 +216,20 @@ public class QuantityMeasurementTest {
         double addition = Unit.addQuantities(feet, inch);
         Assert.assertEquals(14.0,addition,0.0);
     }
+
+    @Test
+    public void givenFeetvalue1_whenAddedWithInchValue1_shouldReturnNotEqual() {
+        QuantityMeasurement feet = new QuantityMeasurement(Unit.FEET,1.0);
+        QuantityMeasurement inch = new QuantityMeasurement(Unit.INCH,1.0);
+        double addition = Unit.addQuantities(feet, inch);
+        Assert.assertNotEquals(5.0,addition,0.0);
+    }
+
+    @Test
+    public void givenFeetvalue1_whenAddedWithFeetValue1_shouldReturnEqual() {
+        QuantityMeasurement feet1 = new QuantityMeasurement(Unit.FEET,1.0);
+        QuantityMeasurement feet2 = new QuantityMeasurement(Unit.FEET,1.0);
+        double addition = Unit.addQuantities(feet1, feet2);
+        Assert.assertEquals(24.0,addition,0.0);
+    }
 }
