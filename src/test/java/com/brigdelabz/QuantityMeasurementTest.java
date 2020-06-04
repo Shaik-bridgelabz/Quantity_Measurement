@@ -232,4 +232,12 @@ public class QuantityMeasurementTest {
         double addition = Unit.addQuantities(feet1, feet2);
         Assert.assertEquals(24.0,addition,0.0);
     }
+
+    @Test
+    public void givenInchvalue2_whenAddedWithCentiMeterValue2_5_shouldReturnEqual() {
+        QuantityMeasurement inch = new QuantityMeasurement(Unit.INCH,2.0);
+        QuantityMeasurement cm = new QuantityMeasurement(Unit.CENTIMETER,2.5);
+        double addition = Unit.addQuantities(inch, cm);
+        Assert.assertEquals(3.0,addition,0.0);
+    }
 }
