@@ -15,4 +15,9 @@ public enum Unit {
                 length2.unit.baseUnitConversion*length2.value ) ==0;
     }
 
+    public static double addQuantities(QuantityMeasurement length1, QuantityMeasurement length2)
+    {
+        double addition =  (length1.value*length1.unit.baseUnitConversion)+(length2.value*length2.unit.baseUnitConversion);
+        return addition;
+    }
 }

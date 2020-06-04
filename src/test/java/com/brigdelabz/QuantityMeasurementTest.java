@@ -200,4 +200,12 @@ public class QuantityMeasurementTest {
         QuantityMeasurement cm = new QuantityMeasurement(Unit.CENTIMETER,30.0);
         Assert.assertEquals(true,Unit.compare(inch,cm));
     }
+
+    @Test
+    public void givenInchvalue2_whenAddedWithInchValue2_shouldReturnEqual() {
+        QuantityMeasurement inch1 = new QuantityMeasurement(Unit.INCH,2.0);
+        QuantityMeasurement inch2 = new QuantityMeasurement(Unit.INCH,2.0);
+        double addition = Unit.addQuantities(inch1, inch2);
+        Assert.assertEquals(4.0,addition,0.0);
+    }
 }
