@@ -180,4 +180,24 @@ public class QuantityMeasurementTest {
         Assert.assertNotEquals(true,Unit.compare(inch,yard));
     }
 
+    @Test
+    public void givenInchValue2_whenComparedwithCentiMeterValue5_shouldReturnEqual() {
+        QuantityMeasurement inch = new QuantityMeasurement(Unit.INCH,2.0);
+        QuantityMeasurement cm = new QuantityMeasurement(Unit.CENTIMETER,5.0);
+        Assert.assertEquals(true,Unit.compare(inch,cm));
+    }
+
+    @Test
+    public void givenInchValue1_whenComparedwithCentiMeterValue1_shouldReturnNotEqual() {
+        QuantityMeasurement inch = new QuantityMeasurement(Unit.INCH,1.0);
+        QuantityMeasurement cm = new QuantityMeasurement(Unit.CENTIMETER,1.0);
+        Assert.assertNotEquals(true,Unit.compare(inch,cm));
+    }
+
+    @Test
+    public void givenFeetvalue1_whenComparedwithCentiMeterValue60_shouldReturnEqual() {
+        QuantityMeasurement inch = new QuantityMeasurement(Unit.FEET,1.0);
+        QuantityMeasurement cm = new QuantityMeasurement(Unit.CENTIMETER,30.0);
+        Assert.assertEquals(true,Unit.compare(inch,cm));
+    }
 }
