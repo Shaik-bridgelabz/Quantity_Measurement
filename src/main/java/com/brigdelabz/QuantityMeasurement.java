@@ -3,11 +3,17 @@ package com.brigdelabz;
 public class QuantityMeasurement {
 
     public double value;
-    public Unit unit;
+    public Length length;
+    public Volume volume;
 
-    public QuantityMeasurement(Unit unit,double value) {
+    public QuantityMeasurement(Length length, double value) {
         this.value=value;
-        this.unit = unit;
+        this.length = length;
+    }
+
+    public QuantityMeasurement(Volume volume, double value) {
+        this.volume=volume;
+        this.value=value;
     }
 
     @Override
@@ -16,7 +22,7 @@ public class QuantityMeasurement {
         if (o == null || getClass() != o.getClass()) return false;
         QuantityMeasurement that = (QuantityMeasurement) o;
         return Double.compare(that.value, value) == 0 &&
-                unit == that.unit;
+                length == that.length;
     }
 
 }
