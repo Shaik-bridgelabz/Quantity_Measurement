@@ -284,4 +284,20 @@ public class QuantityMeasurementTest {
         double addition = Volume.addVolumeQuantities(gallon, litre);
         Assert.assertNotEquals(7.56,addition,0.0);
     }
+
+    @Test
+    public void givenLitrevalue1_whenAddedWithMilliLitresValue1000_shouldReturnEqual() {
+        QuantityMeasurement litre = new QuantityMeasurement(Volume.LITRE,1.0);
+        QuantityMeasurement milliLitre = new QuantityMeasurement(Volume.MILLILITRE,1000.0);
+        double addition = Volume.addVolumeQuantities(litre, milliLitre);
+        Assert.assertEquals(2.0,addition,0.0);
+    }
+
+    @Test
+    public void givenLitrevalue1_whenAddedWithMilliLitresValue1_shouldReturnNotEqual() {
+        QuantityMeasurement litre = new QuantityMeasurement(Volume.LITRE,1.0);
+        QuantityMeasurement milliLitre = new QuantityMeasurement(Volume.MILLILITRE,1.0);
+        double addition = Volume.addVolumeQuantities(litre, milliLitre);
+        Assert.assertNotEquals(2.0,addition,0.0);
+    }
 }
