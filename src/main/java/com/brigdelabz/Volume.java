@@ -1,7 +1,7 @@
 package com.brigdelabz;
 
 public enum Volume {
-    LITRE(1.0),GALLON(3.78);
+    LITRE(1000.0),MILLILITRE(1.0),GALLON(3785.0);
 
     double baseUnitConversion;
 
