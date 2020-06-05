@@ -24,16 +24,23 @@ public enum DifferentQuantities {
     }
 
     public static boolean compareQuantity(QuantityMeasurement value1, QuantityMeasurement value2) {
-        if (value1.differentQuantities.equals(DifferentQuantities.FAHRENHIET))
-            return (Double.compare(Math.round(((value1.value - 32) * 5) / 9),
-                    value2.differentQuantities.baseConversionUnit*value2.value)== 0);
-        if (value1.differentQuantities.equals(DifferentQuantities.CELSIUS))
-            return (Double.compare(Math.round(1.8 * value1.value + 32),
-                    value2.differentQuantities.baseConversionUnit*value2.value)== 0);
         if (value1.differentQuantities.type.equals(value2.differentQuantities.type))
-            return (Double.compare(Math.round(value1.value * value1.differentQuantities.baseConversionUnit),
+            if (value1.differentQuantities.equals(DifferentQuantities.FAHRENHIET))
+                value1.value=covertToCelsius(value1.value);
+            if (value1.differentQuantities.equals(DifferentQuantities.CELSIUS))
+                value1.value=covertToFahrienhiet(value1.value);
+        return (Double.compare(Math.round(value1.value * value1.differentQuantities.baseConversionUnit),
                     Math.round(value2.value * value2.differentQuantities.baseConversionUnit)) == 0);
-        return false;
+    }
+
+    private static double covertToFahrienhiet(double value) {
+        double newValue = Math.round(1.8 * value + 32);
+        return newValue;
+    }
+
+    private static double covertToCelsius(double value) {
+        double newValue = Math.round(((value - 32) * 5) / 9);
+        return newValue;
     }
 
     public static double addQuantity(QuantityMeasurement value1, QuantityMeasurement value2) {
