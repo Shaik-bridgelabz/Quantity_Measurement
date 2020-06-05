@@ -362,4 +362,28 @@ public class QuantityMeasurementTest {
         boolean result = DifferentQuantities.compareQuantity(fahrenhiet,celsius);
         Assert.assertNotEquals(true,result);
     }
+
+    @Test
+    public void givenCelsiusvalue100_whenComparedWithFahrienhetValue212_shouldReturnEqual() {
+        QuantityMeasurement celsius = new QuantityMeasurement(DifferentQuantities.CELSIUS,100.0);
+        QuantityMeasurement fahrenhiet = new QuantityMeasurement(DifferentQuantities.FAHRENHIET,212.0);
+        boolean result = DifferentQuantities.compareQuantity(celsius,fahrenhiet);
+        Assert.assertEquals(true,result);
+    }
+
+    @Test
+    public void givenCelsiusValue38_whenComparedWithFahrienhietValue100_shouldReturnEqual() {
+        QuantityMeasurement celsius = new QuantityMeasurement(DifferentQuantities.CELSIUS,38.0);
+        QuantityMeasurement fahrenhiet = new QuantityMeasurement(DifferentQuantities.FAHRENHIET,100);
+        boolean result = DifferentQuantities.compareQuantity(celsius,fahrenhiet);
+        Assert.assertEquals(true,result);
+    }
+
+    @Test
+    public void givenCelsiusvalue1_whenComparedWithFahrienhietValue1_shouldReturnNotEqual() {
+        QuantityMeasurement celsius = new QuantityMeasurement(DifferentQuantities.CELSIUS,1.0);
+        QuantityMeasurement fahrenhiet = new QuantityMeasurement(DifferentQuantities.FAHRENHIET,1.0);
+        boolean result = DifferentQuantities.compareQuantity(celsius,fahrenhiet);
+        Assert.assertNotEquals(true,result);
+    }
 }

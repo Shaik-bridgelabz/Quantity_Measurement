@@ -11,7 +11,7 @@ public enum DifferentQuantities {
     KILOGRAM(QuantityType.MASS,1.0),
     GRAM(QuantityType.MASS,0.001),
     TONNE(QuantityType.MASS,1000),
-    FAHRENHIET(QuantityType.TEMPERATURE,33.8),
+    FAHRENHIET(QuantityType.TEMPERATURE,1.0),
     CELSIUS(QuantityType.TEMPERATURE,1.0),
     KELVIN(QuantityType.TEMPERATURE,274.15);
 
@@ -24,8 +24,11 @@ public enum DifferentQuantities {
     }
 
     public static boolean compareQuantity(QuantityMeasurement value1, QuantityMeasurement value2) {
-        if (value1.differentQuantities.type.equals(QuantityType.TEMPERATURE))
+        if (value1.differentQuantities.equals(DifferentQuantities.FAHRENHIET))
             return (Double.compare(Math.round(((value1.value - 32) * 5) / 9),
+                    value2.differentQuantities.baseConversionUnit*value2.value)== 0);
+        if (value1.differentQuantities.equals(DifferentQuantities.CELSIUS))
+            return (Double.compare(Math.round(1.8 * value1.value + 32),
                     value2.differentQuantities.baseConversionUnit*value2.value)== 0);
         if (value1.differentQuantities.type.equals(value2.differentQuantities.type))
             return (Double.compare(Math.round(value1.value * value1.differentQuantities.baseConversionUnit),
