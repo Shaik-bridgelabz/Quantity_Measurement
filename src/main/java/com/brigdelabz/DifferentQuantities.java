@@ -24,16 +24,12 @@ public enum DifferentQuantities {
     }
 
     public static boolean compareQuantity(QuantityMeasurement value1, QuantityMeasurement value2) {
+        if (value1.differentQuantities.type.equals(QuantityType.TEMPERATURE))
+            return (Double.compare(Math.round(((value1.value - 32) * 5) / 9),
+                    value2.differentQuantities.baseConversionUnit*value2.value)== 0);
         if (value1.differentQuantities.type.equals(value2.differentQuantities.type))
             return (Double.compare(Math.round(value1.value * value1.differentQuantities.baseConversionUnit),
                     Math.round(value2.value * value2.differentQuantities.baseConversionUnit)) == 0);
-        return false;
-    }
-
-    public static boolean compareTempQuantity(QuantityMeasurement value1, QuantityMeasurement value2) {
-        if (value1.differentQuantities.type.equals(value2.differentQuantities.type))
-            return (Double.compare(Math.round((value1.value -32) * (5/9)),
-                    Math.round(value2.value-32)*(5/9)) == 0);
         return false;
     }
 
