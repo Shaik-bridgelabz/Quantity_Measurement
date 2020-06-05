@@ -7,7 +7,10 @@ public enum DifferentQuantities {
     CENTIMETER(QuantityType.LENGTH,0.4),
     LITRE(QuantityType.VOLUME,1.0),
     MILLILITRE(QuantityType.VOLUME,0.001),
-    GALLON(QuantityType.VOLUME,3.78);
+    GALLON(QuantityType.VOLUME,3.78),
+    KILOGRAM(QuantityType.MASS,1.0),
+    GRAM(QuantityType.MASS,0.001),
+    TONNE(QuantityType.MASS,1000);
 
     private double baseConversionUnit;
     private QuantityType type;

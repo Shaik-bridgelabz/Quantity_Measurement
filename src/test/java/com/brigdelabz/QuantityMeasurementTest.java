@@ -286,4 +286,32 @@ public class QuantityMeasurementTest {
         double addition = DifferentQuantities.addQuantity(litre, milliLitre);
         Assert.assertNotEquals(2.0,addition,0.0);
     }
+
+    @Test
+    public void givenKiloGramvalue1_whenComparedWithGramsValue1000_shouldReturnEqual() {
+        QuantityMeasurement kiloGram = new QuantityMeasurement(DifferentQuantities.KILOGRAM,1.0);
+        QuantityMeasurement gram = new QuantityMeasurement(DifferentQuantities.GRAM,1000.0);
+        Assert.assertEquals(true, DifferentQuantities.compareQuantity(kiloGram,gram));
+    }
+
+    @Test
+    public void givenKiloGramvalue1_whenComparedWithGrameValue1_shouldReturnNotEqual() {
+        QuantityMeasurement kiloGram = new QuantityMeasurement(DifferentQuantities.KILOGRAM,1.0);
+        QuantityMeasurement gram = new QuantityMeasurement(DifferentQuantities.GRAM,1.0);
+        Assert.assertNotEquals(true, DifferentQuantities.compareQuantity(kiloGram,gram));
+    }
+
+    @Test
+    public void givenTonnevalue1_whenComparedWithKiloGramsValue1000_shouldReturnEqual() {
+        QuantityMeasurement tonne = new QuantityMeasurement(DifferentQuantities.TONNE,1.0);
+        QuantityMeasurement kiloGram = new QuantityMeasurement(DifferentQuantities.KILOGRAM,1000.0);
+        Assert.assertEquals(true, DifferentQuantities.compareQuantity(tonne,kiloGram));
+    }
+
+    @Test
+    public void givenTonnevalue1_whenComparedWithGrameValue1_shouldReturnNotEqual() {
+        QuantityMeasurement tonne = new QuantityMeasurement(DifferentQuantities.TONNE,1.0);
+        QuantityMeasurement gram = new QuantityMeasurement(DifferentQuantities.GRAM,1.0);
+        Assert.assertNotEquals(true, DifferentQuantities.compareQuantity(tonne,gram));
+    }
 }
