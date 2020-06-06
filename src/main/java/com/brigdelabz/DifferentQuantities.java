@@ -24,12 +24,12 @@ public enum DifferentQuantities {
     }
 
     public static boolean compareQuantity(QuantityMeasurement value1, QuantityMeasurement value2) {
-        if (value1.differentQuantities.type.equals(value2.differentQuantities.type))
-            if (value1.differentQuantities.equals(DifferentQuantities.FAHRENHIET))
-                value1.value=covertToCelsius(value1.value);
-            if (value1.differentQuantities.equals(DifferentQuantities.CELSIUS))
-                value1.value=covertToFahrienhiet(value1.value);
-        return (Double.compare(Math.round(value1.value * value1.differentQuantities.baseConversionUnit),
+            if (value1.differentQuantities.type.equals(value2.differentQuantities.type))
+                if (value1.differentQuantities.equals(DifferentQuantities.FAHRENHIET))
+                    value1.value = covertToCelsius(value1.value);
+                if (value1.differentQuantities.equals(DifferentQuantities.CELSIUS))
+                value1.value = covertToFahrienhiet(value1.value);
+            return (Double.compare(Math.round(value1.value * value1.differentQuantities.baseConversionUnit),
                     Math.round(value2.value * value2.differentQuantities.baseConversionUnit)) == 0);
     }
 
