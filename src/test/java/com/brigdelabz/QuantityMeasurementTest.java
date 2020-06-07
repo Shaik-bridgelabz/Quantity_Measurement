@@ -408,4 +408,18 @@ public class QuantityMeasurementTest {
             Assert.assertEquals(QuantityMeasurementException.TypeOfException.IMPROPER_QUANTITY, e.type);
         }
     }
+
+    @Test
+    public void givenCelsiusvalue38_whenComparedWithCelsiusValue38_shouldReturnEqual() {
+        QuantityMeasurement celsius1 = new QuantityMeasurement(DifferentQuantities.CELSIUS,38.0);
+        QuantityMeasurement celsius2 = new QuantityMeasurement(DifferentQuantities.CELSIUS,38.0);
+        Assert.assertEquals(celsius1,celsius2);
+    }
+
+    @Test
+    public void givenFahrienhietvalue100_whenComparedWithFahrenhietValue100_shouldReturnEqual() {
+        QuantityMeasurement fahrienhiet1 = new QuantityMeasurement(DifferentQuantities.FAHRENHIET,100.0);
+        QuantityMeasurement fahrienhiet2 = new QuantityMeasurement(DifferentQuantities.FAHRENHIET,100.0);
+        Assert.assertEquals(fahrienhiet1,fahrienhiet2);
+    }
 }
