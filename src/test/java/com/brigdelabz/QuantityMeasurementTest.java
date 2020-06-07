@@ -386,4 +386,26 @@ public class QuantityMeasurementTest {
         boolean result = QuantityMeasurement.compareQuantity(celsius,fahrenhiet);
         Assert.assertNotEquals(true,result);
     }
+
+    @Test
+    public void givenCelsiusvalue_whenAddedWithFahrienhietValue1_shouldThrowException() {
+        try {
+            QuantityMeasurement celsius = new QuantityMeasurement(DifferentQuantities.CELSIUS, 1.0);
+            QuantityMeasurement fahrenhiet = new QuantityMeasurement(DifferentQuantities.FAHRENHIET, 1.0);
+            QuantityMeasurement.addQuantity(celsius, fahrenhiet);
+        } catch (QuantityMeasurementException e) {
+            Assert.assertEquals(QuantityMeasurementException.TypeOfException.IMPROPER_QUANTITY, e.type);
+        }
+    }
+
+    @Test
+    public void givenLengthValue_whenAddedWithVolume_shouldThrowException() {
+        try {
+        QuantityMeasurement foot = new QuantityMeasurement(DifferentQuantities.FEET,5.0);
+        QuantityMeasurement litre = new QuantityMeasurement(DifferentQuantities.LITRE,5.0);
+        QuantityMeasurement.addQuantity(foot,litre);
+        } catch (QuantityMeasurementException e) {
+            Assert.assertEquals(QuantityMeasurementException.TypeOfException.IMPROPER_QUANTITY, e.type);
+        }
+    }
 }

@@ -44,9 +44,13 @@ public enum DifferentQuantities {
     }
 
     public static double addQuantity(QuantityMeasurement value1, QuantityMeasurement value2) {
+        if (value1.differentQuantities.type.equals(QuantityType.TEMPERATURE))
+            throw new QuantityMeasurementException(QuantityMeasurementException.TypeOfException.
+                                                    IMPROPER_QUANTITY,"Temperatures Cannot be added.");
         if (value1.differentQuantities.type.equals(value2.differentQuantities.type))
             return (value1.value * value1.differentQuantities.baseConversionUnit +
                     value2.value * value2.differentQuantities.baseConversionUnit);
-        return 0.0;
+        throw new QuantityMeasurementException(QuantityMeasurementException.TypeOfException.
+                                                    IMPROPER_QUANTITY,"Cannot add Different type of Quantities.");
     }
 }
