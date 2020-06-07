@@ -15,22 +15,22 @@ public enum DifferentQuantities {
     CELSIUS(QuantityType.TEMPERATURE,1.0),
     KELVIN(QuantityType.TEMPERATURE,274.15);
 
-    private double baseConversionUnit;
+    private double baseConversionValue;
     private QuantityType type;
 
-    DifferentQuantities(QuantityType type, double baseConversionUnit) {
+    DifferentQuantities(QuantityType type, double baseConversionValue) {
         this.type = type;
-        this.baseConversionUnit = baseConversionUnit;
+        this.baseConversionValue = baseConversionValue;
     }
 
     public static boolean compareQuantity(QuantityMeasurement value1, QuantityMeasurement value2) {
-            if (value1.differentQuantities.type.equals(value2.differentQuantities.type))
-                if (value1.differentQuantities.equals(DifferentQuantities.FAHRENHIET))
-                    value1.value = covertToCelsius(value1.value);
-                if (value1.differentQuantities.equals(DifferentQuantities.CELSIUS))
+        if (value1.differentQuantities.type.equals(value2.differentQuantities.type))
+            if (value1.differentQuantities.equals(DifferentQuantities.FAHRENHIET))
+                value1.value = covertToCelsius(value1.value);
+            if (value1.differentQuantities.equals(DifferentQuantities.CELSIUS))
                 value1.value = covertToFahrienhiet(value1.value);
-            return (Double.compare(Math.round(value1.value * value1.differentQuantities.baseConversionUnit),
-                    Math.round(value2.value * value2.differentQuantities.baseConversionUnit)) == 0);
+        return (Double.compare(Math.round(value1.value * value1.differentQuantities.baseConversionValue),
+                    Math.round(value2.value * value2.differentQuantities.baseConversionValue)) == 0);
     }
 
     private static double covertToFahrienhiet(double value) {
@@ -48,8 +48,8 @@ public enum DifferentQuantities {
             throw new QuantityMeasurementException(QuantityMeasurementException.TypeOfException.
                                                     IMPROPER_QUANTITY,"Temperatures Cannot be added.");
         if (value1.differentQuantities.type.equals(value2.differentQuantities.type))
-            return (value1.value * value1.differentQuantities.baseConversionUnit +
-                    value2.value * value2.differentQuantities.baseConversionUnit);
+            return (value1.value * value1.differentQuantities.baseConversionValue +
+                    value2.value * value2.differentQuantities.baseConversionValue);
         throw new QuantityMeasurementException(QuantityMeasurementException.TypeOfException.
                                                     IMPROPER_QUANTITY,"Cannot add Different type of Quantities.");
     }
