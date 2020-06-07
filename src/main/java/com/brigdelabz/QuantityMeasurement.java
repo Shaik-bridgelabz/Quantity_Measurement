@@ -6,8 +6,12 @@ public class QuantityMeasurement {
     public DifferentQuantities differentQuantities;
 
     public QuantityMeasurement(DifferentQuantities quantity, double value) {
-        this.value=value;
-        this.differentQuantities =quantity;
+        try {
+            this.value = value;
+            this.differentQuantities = quantity;
+        } catch (NullPointerException e) {
+            throw new QuantityMeasurementException(QuantityMeasurementException.TypeOfException.ENTERED_NULL,"Value Cannot be Null");
+        }
     }
 
     public static boolean compareQuantity(QuantityMeasurement value1, QuantityMeasurement value2) {
@@ -21,7 +25,9 @@ public class QuantityMeasurement {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null)
+            throw new QuantityMeasurementException(QuantityMeasurementException.TypeOfException.ENTERED_NULL,"Object Cannot be Null");
+        if (getClass() != o.getClass()) return false;
         QuantityMeasurement that = (QuantityMeasurement) o;
         return Double.compare(that.value, value) == 0;
     }

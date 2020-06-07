@@ -21,9 +21,12 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenFeetValue_whenComparedwithNullValue_shouldReturnNotEqual() {
-        QuantityMeasurement feet1 = new QuantityMeasurement(DifferentQuantities.FEET,0.0);
-        QuantityMeasurement feet2 = null;
-        Assert.assertNotEquals(feet1,feet2);
+        try {
+            QuantityMeasurement feet1 = new QuantityMeasurement(DifferentQuantities.FEET, 0.0);
+            QuantityMeasurement feet2 = null;
+        } catch (QuantityMeasurementException e) {
+            Assert.assertEquals(QuantityMeasurementException.TypeOfException.ENTERED_NULL, e.type);
+        }
     }
 
     @Test
@@ -77,9 +80,12 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenInchValue_whenComparedwithNullValue_shouldReturnNotEqual() {
-        QuantityMeasurement inch1 = new QuantityMeasurement(DifferentQuantities.INCH,0.0);
-        QuantityMeasurement inch2 = null;
-        Assert.assertNotEquals(inch1,inch2);
+        try {
+            QuantityMeasurement inch1 = new QuantityMeasurement(DifferentQuantities.INCH, 0.0);
+            QuantityMeasurement inch2 = null;
+        } catch (QuantityMeasurementException e) {
+            Assert.assertEquals(QuantityMeasurementException.TypeOfException.ENTERED_NULL, e.type);
+        }
     }
 
     @Test

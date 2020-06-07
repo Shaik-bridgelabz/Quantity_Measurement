@@ -3,7 +3,7 @@ package com.brigdelabz;
 public class QuantityMeasurementException extends RuntimeException {
 
     enum  TypeOfException{
-        IMPROPER_QUANTITY;
+        IMPROPER_QUANTITY,ENTERED_NULL;
     }
 
     public TypeOfException type;
