@@ -13,7 +13,7 @@ public enum DifferentQuantities {
     TONNE(QuantityType.MASS,1000),
     FAHRENHIET(QuantityType.TEMPERATURE,1.0),
     CELSIUS(QuantityType.TEMPERATURE,1.0),
-    KELVIN(QuantityType.TEMPERATURE,274.15);
+    KELVIN(QuantityType.TEMPERATURE,1.0);
 
     private double baseConversionValue;
     private QuantityType type;
@@ -25,22 +25,24 @@ public enum DifferentQuantities {
 
     public static boolean compareQuantity(QuantityMeasurement value1, QuantityMeasurement value2) {
         if (value1.differentQuantities.type.equals(value2.differentQuantities.type))
-            if (value1.differentQuantities.equals(DifferentQuantities.FAHRENHIET))
-                value1.value = covertToCelsius(value1.value);
-            if (value1.differentQuantities.equals(DifferentQuantities.CELSIUS))
-                value1.value = covertToFahrienhiet(value1.value);
+            if (value1.differentQuantities.type.equals(QuantityType.TEMPERATURE)) {
+                value1.value = covertToKelvin(value1);
+                value2.value = covertToKelvin(value2);
+            }
         return (Double.compare(Math.round(value1.value * value1.differentQuantities.baseConversionValue),
                     Math.round(value2.value * value2.differentQuantities.baseConversionValue)) == 0);
     }
 
-    private static double covertToFahrienhiet(double value) {
-        double newValue = Math.round(1.8 * value + 32);
-        return newValue;
-    }
-
-    private static double covertToCelsius(double value) {
-        double newValue = Math.round(((value - 32) * 5) / 9);
-        return newValue;
+    private static double covertToKelvin(QuantityMeasurement value) {
+        if (value.differentQuantities.equals(DifferentQuantities.CELSIUS)) {
+            double newValue = Math.round(value.value + 273.15);
+            return newValue;
+        }
+        if (value.differentQuantities.equals(DifferentQuantities.FAHRENHIET)) {
+            double newValue = Math.round((value.value + 459.67) / 1.8 );
+            return newValue;
+        }
+        return value.value;
     }
 
     public static double addQuantity(QuantityMeasurement value1, QuantityMeasurement value2) {

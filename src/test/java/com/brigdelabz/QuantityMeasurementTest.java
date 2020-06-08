@@ -380,7 +380,7 @@ public class QuantityMeasurementTest {
     @Test
     public void givenCelsiusValue38_whenComparedWithFahrienhietValue100_shouldReturnEqual() {
         QuantityMeasurement celsius = new QuantityMeasurement(DifferentQuantities.CELSIUS,38.0);
-        QuantityMeasurement fahrenhiet = new QuantityMeasurement(DifferentQuantities.FAHRENHIET,100);
+        QuantityMeasurement fahrenhiet = new QuantityMeasurement(DifferentQuantities.FAHRENHIET,100.4);
         boolean result = QuantityMeasurement.compareQuantity(celsius,fahrenhiet);
         Assert.assertEquals(true,result);
     }
@@ -427,5 +427,21 @@ public class QuantityMeasurementTest {
         QuantityMeasurement fahrienhiet1 = new QuantityMeasurement(DifferentQuantities.FAHRENHIET,100.0);
         QuantityMeasurement fahrienhiet2 = new QuantityMeasurement(DifferentQuantities.FAHRENHIET,100.0);
         Assert.assertEquals(fahrienhiet1,fahrienhiet2);
+    }
+
+    @Test
+    public void givenCelsiusValue38_whenComparedWithKelvinValue311_shouldReturnEqual() {
+        QuantityMeasurement celsius = new QuantityMeasurement(DifferentQuantities.CELSIUS,38.0);
+        QuantityMeasurement kelvin = new QuantityMeasurement(DifferentQuantities.KELVIN,311.15);
+        boolean result = QuantityMeasurement.compareQuantity(celsius,kelvin);
+        Assert.assertEquals(true,result);
+    }
+
+    @Test
+    public void givenKelvinValue311_whenComparedWithCelsiusValue38_shouldReturnEqual() {
+        QuantityMeasurement kelvin = new QuantityMeasurement(DifferentQuantities.KELVIN,311.15);
+        QuantityMeasurement celsius = new QuantityMeasurement(DifferentQuantities.CELSIUS,38.0);
+        boolean result = QuantityMeasurement.compareQuantity(kelvin,celsius);
+        Assert.assertEquals(true,result);
     }
 }
