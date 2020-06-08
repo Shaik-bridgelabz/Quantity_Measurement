@@ -444,4 +444,28 @@ public class QuantityMeasurementTest {
         boolean result = QuantityMeasurement.compareQuantity(kelvin,celsius);
         Assert.assertEquals(true,result);
     }
+
+    @Test
+    public void givenFrahrenhietValue60_whenComparedWithKelvinValue288_shouldReturnEqual() {
+        QuantityMeasurement frahrenhiet = new QuantityMeasurement(DifferentQuantities.FAHRENHIET,60.0);
+        QuantityMeasurement kelvin = new QuantityMeasurement(DifferentQuantities.KELVIN,288.71);
+        boolean result = QuantityMeasurement.compareQuantity(frahrenhiet,kelvin);
+        Assert.assertEquals(true,result);
+    }
+
+    @Test
+    public void givenKelvinValue288_whenComparedWithFrahrenhietValue60_shouldReturnEqual() {
+        QuantityMeasurement kelvin = new QuantityMeasurement(DifferentQuantities.KELVIN,288.71);
+        QuantityMeasurement frahrenhiet = new QuantityMeasurement(DifferentQuantities.FAHRENHIET,60.0);
+        boolean result = QuantityMeasurement.compareQuantity(kelvin,frahrenhiet);
+        Assert.assertEquals(true,result);
+    }
+
+    @Test
+    public void givenKelvinValue500_whenComparedWithFrahrenhietValue600_shouldReturnNotEqual() {
+        QuantityMeasurement kelvin = new QuantityMeasurement(DifferentQuantities.KELVIN,500.0);
+        QuantityMeasurement frahrenhiet = new QuantityMeasurement(DifferentQuantities.FAHRENHIET,600.0);
+        boolean result = QuantityMeasurement.compareQuantity(kelvin,frahrenhiet);
+        Assert.assertNotEquals(true,result);
+    }
 }
