@@ -24,13 +24,15 @@ public enum DifferentQuantities {
     }
 
     public static boolean compareQuantity(QuantityMeasurement value1, QuantityMeasurement value2) {
-        if (value1.differentQuantities.type.equals(value2.differentQuantities.type))
+        if (value1.differentQuantities.type.equals(value2.differentQuantities.type)) {
             if (value1.differentQuantities.type.equals(QuantityType.TEMPERATURE)) {
                 value1.value = covertToKelvin(value1);
                 value2.value = covertToKelvin(value2);
             }
-        return (Double.compare(Math.round(value1.value * value1.differentQuantities.baseConversionValue),
+            return (Double.compare(Math.round(value1.value * value1.differentQuantities.baseConversionValue),
                     Math.round(value2.value * value2.differentQuantities.baseConversionValue)) == 0);
+        }
+        throw new QuantityMeasurementException(QuantityMeasurementException.TypeOfException.IMPROPER_QUANTITY,"Cannot compare Different type of Quantities.");
     }
 
     private static double covertToKelvin(QuantityMeasurement value) {

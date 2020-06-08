@@ -468,4 +468,16 @@ public class QuantityMeasurementTest {
         boolean result = QuantityMeasurement.compareQuantity(kelvin,frahrenhiet);
         Assert.assertNotEquals(true,result);
     }
+
+    @Test
+    public void givenCelsiusValue38_whenComparedWithKiloGramValue100_shouldThrowException() {
+        try {
+            QuantityMeasurement celsius = new QuantityMeasurement(DifferentQuantities.CELSIUS, 38.0);
+            QuantityMeasurement kiloGram = new QuantityMeasurement(DifferentQuantities.KILOGRAM, 100.0);
+            QuantityMeasurement.compareQuantity(celsius, kiloGram);
+        } catch (QuantityMeasurementException e) {
+            Assert.assertEquals(QuantityMeasurementException.TypeOfException.IMPROPER_QUANTITY,e.type);
+        }
+    }
+
 }
